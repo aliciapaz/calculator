@@ -3,10 +3,10 @@ import ButtonPanel from './ButtonPanel';
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
       <Display />
       <ButtonPanel />
-    </div>
+    </React.Fragment>
   );
 }
 
