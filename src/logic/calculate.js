@@ -1,10 +1,13 @@
+import Big from 'big.js';
 import operate from './operate';
 
 const calculate = (data, btnName) => {
   const result = { total: Number, next: Number, operation: '' };
+  const bigTotal = Big(data.total);
+  const bigNext = Big(data.next);
   if (btnName === '+/-') {
-    result.total = data.total * -1;
-    result.next = data.next * -1;
+    result.total = Big(bigTotal * -1);
+    result.next = Big(bigNext * -1);
   }
   if (
     btnName === '+'
