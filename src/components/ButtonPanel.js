@@ -1,37 +1,27 @@
 import Button from './Button';
 
-const ButtonPanel = () => (
-  <div>
-    <div className="btn-group">
-      <Button btnName="AC" />
-      <Button btnName="+/-" />
-      <Button btnName="%" />
-      <Button btnName="÷" />
+const ButtonPanel = () => {
+  const groups = [
+    ['AC', '+/-', '%', '÷'],
+    ['7', '8', '9', 'X'],
+    ['4', '5', '6', '-'],
+    ['1', '2', '3', '+'],
+    ['0', '.', '='],
+  ];
+  return (
+    <div>
+      {groups.map((group) => (
+        <div key={`group-${groups.indexOf(group)}`}>
+          {group.map((btnName) => (
+            <Button
+              key={`btnName-${group.indexOf(btnName)}`}
+              btnName={btnName}
+            />
+          ))}
+        </div>
+      ))}
     </div>
-    <div className="btn-group">
-      <Button btnName="7" />
-      <Button btnName="8" />
-      <Button btnName="9" />
-      <Button btnName="X" />
-    </div>
-    <div className="btn-group">
-      <Button btnName="4" />
-      <Button btnName="5" />
-      <Button btnName="6" />
-      <Button btnName="-" />
-    </div>
-    <div className="btn-group">
-      <Button btnName="1" />
-      <Button btnName="2" />
-      <Button btnName="3" />
-      <Button btnName="+" />
-    </div>
-    <div className="btn-group">
-      <Button btnName="0" />
-      <Button btnName="." />
-      <Button btnName="=" />
-    </div>
-  </div>
-);
+  );
+};
 
 export default ButtonPanel;
