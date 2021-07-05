@@ -1,7 +1,9 @@
-const Display = ({ result }) => {
-  return <div>{result}</div>;
-};
+import PropTypes from 'prop-types';
 
-Display.defaultProps = {
-  result: 0,
-};
+const Display = ({ result }) => <div>{result}</div>;
+
+Display.propTypes = { result: PropTypes.number };
+
+Display.defaultProps = { result: 0 };
+
+export default Display;
