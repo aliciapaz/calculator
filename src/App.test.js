@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from '@testing-library/react';
+import App from './components/App';
 
-test('renders learn react link', () => {
+test('renders 19 buttons', () => {
   render(<App />);
-  const linkElement = screen.getByText(/There will be a calculator here soon.../i);
-  expect(linkElement).toBeInTheDocument();
+  const buttons = document.body.getElementsByTagName('BUTTON');
+  expect(buttons.length).toEqual(19);
 });
