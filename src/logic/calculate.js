@@ -16,11 +16,11 @@ const calculate = (data, btnName) => {
     result.total = `${bigTotal}.${bigNext}`;
   }
   if (
-    btnName === '+' ||
-    btnName === '-' ||
-    btnName === 'X' ||
-    btnName === '÷' ||
-    btnName === '%'
+    btnName === '+'
+    || btnName === '-'
+    || btnName === 'X'
+    || btnName === '÷'
+    || btnName === '%'
   ) {
     result.total = operate(data.total, data.next, btnName);
     result.operation = btnName;
