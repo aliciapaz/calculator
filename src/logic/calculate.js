@@ -9,12 +9,18 @@ const calculate = (data, btnName) => {
     result.total = Big(bigTotal * -1);
     result.next = Big(bigNext * -1);
   }
+  if (btnName === 'A/C') {
+    result.total = '0';
+  }
+  if (btnName === '.') {
+    result.total = `${bigTotal}.${bigNext}`;
+  }
   if (
-    btnName === '+'
-    || btnName === '-'
-    || btnName === 'X'
-    || btnName === '÷'
-    || btnName === '%'
+    btnName === '+' ||
+    btnName === '-' ||
+    btnName === 'X' ||
+    btnName === '÷' ||
+    btnName === '%'
   ) {
     result.total = operate(data.total, data.next, btnName);
     result.operation = btnName;
