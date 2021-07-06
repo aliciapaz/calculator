@@ -1,4 +1,4 @@
-# Clculator
+# Calculator
 A simple calculator built with React for learning purposes
 
 ## Built With
