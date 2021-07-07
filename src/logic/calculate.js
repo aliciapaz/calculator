@@ -2,9 +2,10 @@ import Big from 'big.js';
 import operate from './operate';
 
 const calculate = (data, btnName) => {
-  const result = { total: Number, next: Number, operation: '' };
-  const bigTotal = Big(data.total);
-  const bigNext = Big(data.next);
+  const { total, next } = data;
+  const result = {};
+  const bigTotal = Big(parseFloat(total));
+  const bigNext = Big(parseFloat(next));
   if (btnName === '+/-') {
     result.total = Big(bigTotal * -1);
     result.next = Big(bigNext * -1);
