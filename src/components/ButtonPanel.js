@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import Button from './Button';
 
-const ButtonPanel = (props) => {
-  const handleClick = (btnName) => props.clickHandler(btnName);
+const ButtonPanel = ({ clickHandler }) => {
+  const handleClick = (btnName) => clickHandler(btnName);
 
   const groups = [
     ['AC', '+/-', '%', '÷'],
