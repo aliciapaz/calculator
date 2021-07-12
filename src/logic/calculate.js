@@ -15,7 +15,7 @@ const calculate = (data = {}, btnName) => {
     };
   }
 
-  if (btnName === 'A/C') {
+  if (btnName === 'AC') {
     return {
       ...data,
       total: null,
