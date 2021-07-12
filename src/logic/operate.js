@@ -1,7 +1,6 @@
 import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
-  let result = new Big(0);
   const bigNumberOne = numberOne ? Big(numberOne) : null;
   const bigNumberTwo = numberTwo ? Big(numberTwo) : null;
 
@@ -23,6 +22,8 @@ const operate = (numberOne, numberTwo, operation) => {
       }
     case '%':
       return `${bigNumberOne.times(100).div(bigNumberTwo).toString()}%`;
+    default:
+      return '0';
   }
 };
 

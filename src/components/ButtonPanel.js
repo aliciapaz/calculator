@@ -12,7 +12,7 @@ const ButtonPanel = ({ clickHandler }) => {
     ['0', '.', '='],
   ];
   return (
-    <div>
+    <div className="button-panel">
       {groups.map((group) => (
         <div key={`group-${groups.indexOf(group)}`}>
           {group.map((btnName) => (

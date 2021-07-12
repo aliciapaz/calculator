@@ -15,16 +15,16 @@ export default class App extends React.Component {
   }
 
   handleClick(btnName) {
-    const { total, next, operation } = this.state;
-    const data = { total, next, operation };
-    this.setState({ operation: btnName, total: calculate(data, btnName) });
+    const calculator = calculate(this.state, btnName);
+    this.setState({ ...calculator });
   }
 
   render() {
-    const { total } = this.state;
+    const { next, total } = this.state;
+    const result = next ? next && next.toString() : total && total.toString();
     return (
       <>
-        <Display result={total} />
+        <Display result={result} />
         <ButtonPanel clickHandler={this.handleClick} />
       </>
     );
