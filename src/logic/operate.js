@@ -2,24 +2,28 @@ import Big from 'big.js';
 
 const operate = (numberOne, numberTwo, operation) => {
   let result = new Big(0);
-  const bigOne = Big(numberOne);
-  const bigTwo = Big(numberTwo);
-  if (operation === '+') {
-    result = bigOne.plus(bigTwo);
+  const bigNumberOne = numberOne ? Big(numberOne) : null;
+  const bigNumberTwo = numberTwo ? Big(numberTwo) : null;
+
+  switch (operation) {
+    case '+':
+      return bigNumberOne.plus(bigNumberTwo).toString();
+    case '-':
+      return bigNumberOne.minus(bigNumberTwo).toString();
+    case 'X':
+      return bigNumberOne.times(bigNumberTwo).toString();
+    case '÷':
+      try {
+        bigNumberOne.div(bigNumberTwo);
+        return (
+          Math.round(bigNumberOne.div(bigNumberTwo) * 1000000.0) / 1000000.0
+        ).toString();
+      } catch (err) {
+        return 'Error, division by 0';
+      }
+    case '%':
+      return `${bigNumberOne.times(100).div(bigNumberTwo).toString()}%`;
   }
-  if (operation === '-') {
-    result = bigOne.minus(bigTwo);
-  }
-  if (operation === 'X') {
-    result = bigOne.times(bigTwo);
-  }
-  if (operation === '÷') {
-    result = bigOne.div(bigTwo);
-  }
-  if (operation === '%') {
-    result = `${bigOne.times(100).div(bigTwo)}%`;
-  }
-  return result.toString();
 };
 
 export default operate;
