@@ -24,7 +24,7 @@ export default class App extends React.Component {
     const result = next ? next && next.toString() : total && total.toString();
     return (
       <>
-        <Display result={result} />
+        <Display result={result || '0'} />
         <ButtonPanel clickHandler={this.handleClick} />
       </>
     );
