@@ -1,31 +1,74 @@
-import Big from 'big.js';
 import operate from './operate';
 
-const calculate = (data, btnName) => {
-  const result = { total: Number, next: Number, operation: '' };
-  const bigTotal = Big(data.total);
-  const bigNext = Big(data.next);
+const calculate = (data = {}, btnName) => {
+  let { total, next, operation } = data;
+  const numbers = Array(10)
+    .fill(null)
+    .map((n, i) => i.toString());
+  const operators = ['+', '-', 'X', '÷', '%'];
+
   if (btnName === '+/-') {
-    result.total = Big(bigTotal * -1);
-    result.next = Big(bigNext * -1);
+    return {
+      ...data,
+      total: total * -1,
+      next: next * -1,
+    };
   }
-  if (btnName === 'A/C') {
-    result.total = '0';
+
+  if (btnName === 'AC') {
+    return {
+      ...data,
+      total: null,
+      next: null,
+      operation: null,
+    };
   }
+
   if (btnName === '.') {
-    result.total = `${bigTotal}.${bigNext}`;
+    if (!next.includes('.')) {
+      next += btnName;
+    }
   }
-  if (
-    btnName === '+'
-    || btnName === '-'
-    || btnName === 'X'
-    || btnName === '÷'
-    || btnName === '%'
-  ) {
-    result.total = operate(data.total, data.next, btnName);
-    result.operation = btnName;
+
+  if (numbers.includes(btnName)) {
+    while (next === null) {
+      next = '';
+    }
+    next += btnName;
   }
-  return result;
+
+  if (operators.includes(btnName)) {
+    while (next !== null && operation !== null) {
+      total = operate(total, next, operation);
+      operation = btnName;
+      next = null;
+      operation = null;
+    }
+    while (next !== null) {
+      total = next;
+      next = null;
+    }
+    if (next == null || operation == null) {
+      operation = btnName;
+    }
+  }
+
+  if (btnName === '=') {
+    if (total && !next) {
+      const result = total;
+      total = result;
+    }
+    if (!total && !next) {
+      total = 0;
+    }
+    if (total && next && operation) {
+      total = operate(total, next, operation);
+      next = null;
+      operation = null;
+    }
+  }
+
+  return { total, next, operation };
 };
 
 export default calculate;

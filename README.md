@@ -23,7 +23,10 @@ To get a local copy up and running follow these simple example steps.
 
 ### Usage
 
-- Soon to be added...
+- Input the first number. It can be integer or float. If float, use the '.' button to add decimals
+- Choose an operation: addition, substraction, multiplication or division
+- Input the second number. Same as step one, the number can be integer or float
+- Click on the "=" button to see the result
 
 ### Deployment
 
